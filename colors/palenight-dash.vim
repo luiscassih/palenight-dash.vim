@@ -1,9 +1,9 @@
 " vim:fdm=marker
 " Vim Color File
-" Name:       palenight.vim
-" Maintainer: https://github.com/drewtempelmeyer/palenight.vim
+" Name:       palenight-dash.vim
+" Maintainer: https://github.com/luiscassih/palenight.vim
 " License:    The MIT License (MIT)
-" Based On:   https://github.com/joshdick/onedark.vim
+" Based On:   https://github.com/drewtempelmeyer/onedark.vim
 
 " Initialization {{{
 
@@ -15,26 +15,26 @@ endif
 
 set t_Co=256
 
-let g:colors_name="palenight"
+let g:colors_name="palenight-dash"
 
 " Set to "256" for 256-color terminals, or
 " set to "16" to use your terminal emulator's native colors
 " (a 16-color palette for this color scheme is available; see
 " < https://github.com/joshdick/onedark.vim/blob/master/README.md >
 " for more information.)
-if !exists("g:palenight_termcolors")
-  let g:palenight_termcolors = 256
+if !exists("g:palenight_dash_termcolors")
+  let g:palenight_dash_termcolors = 256
 endif
 
 " Not all terminals support italics properly. If yours does, opt-in.
-if !exists("g:palenight_terminal_italics")
-  let g:palenight_terminal_italics = 0
+if !exists("g:palenight_dash_terminal_italics")
+  let g:palenight_dash_terminal_italics = 0
 endif
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
 " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
-  if g:palenight_terminal_italics == 0
+  if g:palenight_dash_terminal_italics == 0
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
@@ -42,7 +42,7 @@ function! s:h(group, style)
       unlet a:style.gui
     endif
   endif
-  if g:palenight_termcolors == 16
+  if g:palenight_dash_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
   else
@@ -61,7 +61,7 @@ endfunction
 
 " public {{{
 
-function! palenight#set_highlight(group, style)
+function! palenight_dash#set_highlight(group, style)
   call s:h(a:group, a:style)
 endfunction
 
@@ -71,7 +71,7 @@ endfunction
 
 " Color Variables {{{
 
-let s:colors = palenight#GetColors()
+let s:colors = palenight_dash#GetColors()
 
 let s:red = s:colors.red
 let s:light_red = s:colors.light_red
@@ -104,16 +104,16 @@ call s:h("Constant", { "fg": s:cyan }) " any constant
 call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
 call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
 call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
-call s:h("Boolean", { "fg": s:red }) " a boolean constant: TRUE, false
+call s:h("Boolean", { "fg": s:blue }) " a boolean constant: TRUE, false
 call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-call s:h("Identifier", { "fg": s:red }) " any variable name
-call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
+call s:h("Identifier", { "fg": s:blue }) " any variable name
+call s:h("Function", { "fg": s:red }) " function name (also: methods for classes)
 call s:h("Statement", { "fg": s:purple }) " any statement
 call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
 call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
 call s:h("Label", { "fg": s:purple }) " case, default, etc.
 call s:h("Operator", { "fg": s:cyan }) " sizeof", "+", "*", etc.
-call s:h("Keyword", { "fg": s:red }) " any other keyword
+call s:h("Keyword", { "fg": s:blue }) " any other keyword
 call s:h("Exception", { "fg": s:purple }) " try, catch, throw
 call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
 call s:h("Include", { "fg": s:blue }) " preprocessor #include
@@ -124,7 +124,7 @@ call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
 call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
 call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
 call s:h("Typedef", { "fg": s:yellow }) " A typedef
-call s:h("Special", { "fg": s:blue }) " any special symbol
+call s:h("Special", { "fg": s:red }) " any special symbol
 call s:h("SpecialChar", {}) " special character in a constant
 call s:h("Tag", {}) " you can use CTRL-] on this
 call s:h("Delimiter", {}) " character that needs attention
@@ -202,22 +202,22 @@ call s:h("shFunctionKey", { "fg": s:purple })
 call s:h("cssAttrComma", { "fg": s:purple })
 call s:h("cssAttributeSelector", { "fg": s:green })
 call s:h("cssBraces", { "fg": s:white })
-call s:h("cssClassName", { "fg": s:dark_yellow })
-call s:h("cssClassNameDot", { "fg": s:dark_yellow })
+call s:h("cssClassName", { "fg": s:red })
+call s:h("cssClassNameDot", { "fg": s:red })
 call s:h("cssDefinition", { "fg": s:purple })
 call s:h("cssFontAttr", { "fg": s:dark_yellow })
 call s:h("cssFontDescriptor", { "fg": s:purple })
-call s:h("cssFunctionName", { "fg": s:blue })
+call s:h("cssFunctionName", { "fg": s:red })
 call s:h("cssIdentifier", { "fg": s:blue })
 call s:h("cssImportant", { "fg": s:purple })
-call s:h("cssInclude", { "fg": s:white })
+call s:h("cssInclude", { "fg": s:blue })
 call s:h("cssIncludeKeyword", { "fg": s:purple })
 call s:h("cssMediaType", { "fg": s:dark_yellow })
 call s:h("cssProp", { "fg": s:white })
 call s:h("cssPseudoClassId", { "fg": s:dark_yellow })
 call s:h("cssSelectorOp", { "fg": s:purple })
 call s:h("cssSelectorOp2", { "fg": s:purple })
-call s:h("cssTagName", { "fg": s:red })
+call s:h("cssTagName", { "fg": s:blue })
 
 " Go
 call s:h("goDeclaration", { "fg": s:purple })
@@ -229,9 +229,9 @@ call s:h("htmlEndTag", { "fg": s:cyan })
 call s:h("htmlH1", { "fg": s:white })
 call s:h("htmlLink", { "fg": s:purple })
 call s:h("htmlSpecialChar", { "fg": s:dark_yellow })
-call s:h("htmlSpecialTagName", { "fg": s:red })
-call s:h("htmlTag", { "fg": s:cyan })
-call s:h("htmlTagName", { "fg": s:red })
+call s:h("htmlSpecialTagName", { "fg": s:blue })
+call s:h("htmlTag", { "fg": s:blue })
+call s:h("htmlTagName", { "fg": s:blue })
 
 " Coffeescript
 call s:h("coffeeExtendedOp", { "fg": s:purple })
@@ -249,19 +249,19 @@ call s:h("jsArrowFunction", { "fg": s:purple })
 call s:h("jsClassKeyword", { "fg": s:purple })
 call s:h("jsClassDefinition", { "fg": s:yellow })
 call s:h("jsClassMethodType", { "fg": s:purple })
-call s:h("jsClassFuncName", { "fg": s:blue })
+call s:h("jsClassFuncName", { "fg": s:red })
 call s:h("jsDestructuringBlock", { "fg": s:blue })
 call s:h("jsDocParam", { "fg": s:blue })
 call s:h("jsDocTags", { "fg": s:purple })
 call s:h("jsExport", { "fg": s:purple })
-call s:h("jsExportDefault", { "fg": s:red })
+call s:h("jsExportDefault", { "fg": s:blue })
 call s:h("jsExtendsKeyword", { "fg": s:purple })
 call s:h("jsConditional", { "fg": s:purple })
 call s:h("jsOperator", { "fg": s:purple })
 call s:h("jsFrom", { "fg": s:purple })
 call s:h("jsFuncArgs", { "fg": s:blue })
-call s:h("jsFuncCall", { "fg": s:blue })
-call s:h("jsFuncName", { "fg": s:blue })
+call s:h("jsFuncCall", { "fg": s:red })
+call s:h("jsFuncName", { "fg": s:red })
 call s:h("jsObjectProp", { "fg": s:cyan })
 call s:h("jsFunction", { "fg": s:purple })
 call s:h("jsGenerator", { "fg": s:yellow })
@@ -273,10 +273,10 @@ call s:h("jsModuleKeyword", { "fg": s:blue })
 call s:h("jsModules", { "fg": s:purple })
 call s:h("jsNull", { "fg": s:dark_yellow })
 call s:h("jsStorageClass", { "fg": s:purple })
-call s:h("jsSuper", { "fg": s:red })
+call s:h("jsSuper", { "fg": s:blue })
 call s:h("jsTemplateBraces", { "fg": s:dark_red })
 call s:h("jsTemplateVar", { "fg": s:green })
-call s:h("jsThis", { "fg": s:red })
+call s:h("jsThis", { "fg": s:blue })
 call s:h("jsUndefined", { "fg": s:dark_yellow })
 " call s:h("jsVariableDef", { "fg": s:blue })
 " https://github.com/othree/yajs.vim
@@ -290,7 +290,7 @@ call s:h("javascriptEndColons", { "fg": s:white })
 call s:h("javascriptExport", { "fg": s:purple })
 call s:h("javascriptFuncArg", { "fg": s:white })
 call s:h("javascriptFuncKeyword", { "fg": s:purple })
-call s:h("javascriptIdentifier", { "fg": s:red })
+call s:h("javascriptIdentifier", { "fg": s:blue })
 call s:h("javascriptImport", { "fg": s:purple })
 call s:h("javascriptMethodName", { "fg": s:white })
 call s:h("javascriptObjectLabel", { "fg": s:white })
@@ -303,7 +303,7 @@ call s:h("javascriptVariable", { "fg": s:purple })
 " JSON
 call s:h("jsonCommentError", { "fg": s:white })
 call s:h("jsonKeyword", { "fg": s:blue })
-call s:h("jsonBoolean", { "fg": s:red })
+call s:h("jsonBoolean", { "fg": s:blue })
 call s:h("jsonNumber", { "fg": s:dark_yellow })
 call s:h("jsonQuote", { "fg": s:white })
 call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })
@@ -319,7 +319,7 @@ call s:h("markdownLinkReference", { "fg": s:comment_grey })
 call s:h("markdownJekyllFrontMatter", { "fg": s:comment_grey })
 call s:h("markdownCodeBlock", { "fg": s:green })
 call s:h("markdownCodeDelimiter", { "fg": s:green })
-call s:h("markdownHeadingDelimiter", { "fg": s:red })
+call s:h("markdownHeadingDelimiter", { "fg": s:blue })
 call s:h("markdownRule", { "fg": s:comment_grey })
 call s:h("markdownHeadingRule", { "fg": s:comment_grey })
 call s:h("htmlH1", { "fg": s:blue })
@@ -335,7 +335,7 @@ call s:h("markdownItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" 
 call s:h("mkdBold", { "fg": s:yellow, "gui": "bold", "cterm": "bold" })
 call s:h("mkdInlineURL", { "fg": s:light_red })
 call s:h("mkdListItem", { "fg": s:yellow })
-call s:h("markdownOrderedListMarker", { "fg": s:red })
+call s:h("markdownOrderedListMarker", { "fg": s:blue })
 call s:h("markdownIdDeclaration", { "fg": s:blue })
 call s:h("mkdLink", { "fg": s:white })
 call s:h("markdownLinkDelimiter", { "fg": s:white })
@@ -345,7 +345,7 @@ call s:h("mkdURL", { "fg": s:light_red })
 call s:h("rubyAccess", { "fg": s:cyan })
 call s:h("rubyBlockParameter", { "fg": s:yellow})
 call s:h("rubyBlockParameterList", { "fg": s:white })
-call s:h("rubyBoolean", { "fg": s:red })
+call s:h("rubyBoolean", { "fg": s:blue })
 call s:h("rubyCapitalizedMethod", { "fg": s:blue})
 call s:h("rubyClass", { "fg": s:purple})
 call s:h("rubyClassName", { "fg": s:yellow })
@@ -358,7 +358,7 @@ call s:h("rubyInclude", { "fg": s:cyan})
 call s:h("rubyIncluderubyGlobalVariable", { "fg": s:red})
 call s:h("rubyInstanceVariable", { "fg": s:red})
 call s:h("rubyInterpolation", { "fg": s:cyan })
-call s:h("rubyInterpolationDelimiter", { "fg": s:red })
+call s:h("rubyInterpolationDelimiter", { "fg": s:blue })
 call s:h("rubyModuleName", { "fg": s:white })
 call s:h("rubyKeyword", { "fg": s:purple })
 call s:h("rubyKeywordAsMethod", { "fg": s:cyan})
@@ -372,7 +372,7 @@ call s:h("rubyStringDelimiter", { "fg": s:green})
 call s:h("rubySymbol", { "fg": s:blue})
 
 " ERb
-call s:h("erubyDelimiter", { "fg": s:red })
+call s:h("erubyDelimiter", { "fg": s:blue })
 
 " Rails
 call s:h("railsAssetPreProc", { "fg": s:comment_grey })
@@ -397,12 +397,12 @@ call s:h("cssUnitDecorators", { "fg": s:yellow })
 
 " Sass
 " https://github.com/tpope/vim-haml
-call s:h("sassAmpersand", { "fg": s:red })
-call s:h("sassClass", { "fg": s:dark_yellow })
+call s:h("sassAmpersand", { "fg": s:blue })
+call s:h("sassClass", { "fg": s:blue })
 call s:h("sassControl", { "fg": s:purple })
 call s:h("sassExtend", { "fg": s:purple })
 call s:h("sassFor", { "fg": s:white })
-call s:h("sassFunction", { "fg": s:cyan })
+call s:h("sassFunction", { "fg": s:red })
 call s:h("sassId", { "fg": s:blue })
 call s:h("sassInclude", { "fg": s:purple })
 call s:h("sassMedia", { "fg": s:purple })
@@ -414,7 +414,7 @@ call s:h("sassVariable", { "fg": s:dark_yellow })
 " https://github.com/cakebaker/scss-syntax.vim
 call s:h("scssExtend", { "fg": s:purple })
 call s:h("scssExtendedSelector", { "fg": s:dark_yellow })
-call s:h("scssFunctionName", { "fg": s:cyan })
+call s:h("scssFunctionName", { "fg": s:red })
 call s:h("scssImport", { "fg": s:purple })
 call s:h("scssInclude", { "fg": s:purple })
 call s:h("scssMixin", { "fg": s:purple })
@@ -429,20 +429,20 @@ call s:h("typescriptBraces", { "fg": s:white })
 
 " XML
 call s:h("xmlAttrib", { "fg": s:yellow })
-call s:h("xmlEndTag", { "fg": s:red })
-call s:h("xmlTag", { "fg": s:red })
-call s:h("xmlTagName", { "fg": s:red })
+call s:h("xmlEndTag", { "fg": s:blue })
+call s:h("xmlTag", { "fg": s:blue })
+call s:h("xmlTagName", { "fg": s:blue })
 
 " PHP
 call s:h("phpInclude", { "fg": s:purple })
 call s:h("phpClass", { "fg": s:yellow })
 call s:h("phpClasses", { "fg": s:yellow })
-call s:h("phpFunction", { "fg": s:blue })
+call s:h("phpFunction", { "fg": s:red })
 call s:h("phpType", { "fg": s:purple })
 call s:h("phpKeyword", { "fg": s:purple })
 call s:h("phpVarSelector", { "fg": s:white })
 call s:h("phpIdentifier", { "fg": s:white })
-call s:h("phpMethod", { "fg": s:blue })
+call s:h("phpMethod", { "fg": s:red })
 call s:h("phpBoolean", { "fg": s:blue })
 call s:h("phpParent", { "fg": s:white })
 call s:h("phpOperator", { "fg": s:purple })
