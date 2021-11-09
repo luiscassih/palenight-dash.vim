@@ -22,19 +22,19 @@ let g:colors_name="palenight-dash"
 " (a 16-color palette for this color scheme is available; see
 " < https://github.com/joshdick/onedark.vim/blob/master/README.md >
 " for more information.)
-if !exists("g:palenight_dash_termcolors")
-  let g:palenight_dash_termcolors = 256
+if !exists("g:palenightdash_termcolors")
+  let g:palenightdash_termcolors = 256
 endif
 
 " Not all terminals support italics properly. If yours does, opt-in.
-if !exists("g:palenight_dash_terminal_italics")
-  let g:palenight_dash_terminal_italics = 0
+if !exists("g:palenightdash_terminal_italics")
+  let g:palenightdash_terminal_italics = 0
 endif
 
 " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
 " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
 function! s:h(group, style)
-  if g:palenight_dash_terminal_italics == 0
+  if g:palenightdash_terminal_italics == 0
     if has_key(a:style, "cterm") && a:style["cterm"] == "italic"
       unlet a:style.cterm
     endif
@@ -42,7 +42,7 @@ function! s:h(group, style)
       unlet a:style.gui
     endif
   endif
-  if g:palenight_dash_termcolors == 16
+  if g:palenightdash_termcolors == 16
     let l:ctermfg = (has_key(a:style, "fg") ? a:style.fg.cterm16 : "NONE")
     let l:ctermbg = (has_key(a:style, "bg") ? a:style.bg.cterm16 : "NONE")
   else
@@ -61,7 +61,7 @@ endfunction
 
 " public {{{
 
-function! palenight_dash#set_highlight(group, style)
+function! palenightdash#set_highlight(group, style)
   call s:h(a:group, a:style)
 endfunction
 
@@ -71,7 +71,7 @@ endfunction
 
 " Color Variables {{{
 
-let s:colors = palenight_dash#GetColors()
+let s:colors = palenightdash#GetColors()
 
 let s:red = s:colors.red
 let s:light_red = s:colors.light_red
